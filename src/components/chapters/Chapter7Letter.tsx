@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useBirthday } from '../../context/BirthdayContext';
 import { sound } from '../../utils/audio';
+import { ASSETS } from '../../utils/assets';
 import { Sparkles, Mail, Heart, Edit3, ChevronRight, RotateCcw } from 'lucide-react';
 
 const DEFAULT_LETTER_TEXT = `Hey,
@@ -25,8 +26,14 @@ Happy birthday, beautiful. Love you.`;
 
 export const Chapter7Letter: React.FC = () => {
   const { nextChapter, envelopeOpen, openEnvelope, resetEnvelope } = useBirthday();
-  const [letterText, setLetterText] = useState(DEFAULT_LETTER_TEXT);
+  const [letterText, setLetterText] = useState(() => {
+    return localStorage.getItem('bday_letter_text') || DEFAULT_LETTER_TEXT;
+  });
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('bday_letter_text', letterText);
+  }, [letterText]);
 
   const handleWaxClick = () => {
     openEnvelope();
@@ -37,7 +44,7 @@ export const Chapter7Letter: React.FC = () => {
       {/* Background with dark crimson atmosphere */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <img
-          src="/src/assets/images/storybook_cover_1794071410328.jpg"
+          src={ASSETS.storybookCover}
           alt="Vintage Desk"
           className="w-full h-full object-cover opacity-25"
           referrerPolicy="no-referrer"

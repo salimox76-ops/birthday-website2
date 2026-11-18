@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useBirthday } from '../../context/BirthdayContext';
 import { sound } from '../../utils/audio';
+import { ASSETS } from '../../utils/assets';
 import confetti from 'canvas-confetti';
 import { Sparkles, Utensils, RotateCcw, ChevronRight, Heart } from 'lucide-react';
 
@@ -109,7 +110,7 @@ export const Chapter6Cake: React.FC = () => {
       {/* Background with dark crimson atmosphere */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <img
-          src="/src/assets/images/cake_backdrop_1794071412244.jpg"
+          src={ASSETS.cakeBackdrop}
           alt="Velvet Celebration"
           className="w-full h-full object-cover opacity-25"
           referrerPolicy="no-referrer"

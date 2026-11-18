@@ -13,133 +13,133 @@ export interface QuizQuestion {
 export const DEFAULT_QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
-    question: "Be completely honest: who actually caught feelings first?",
+    question: "What's something about yourself that you know drives me absolutely crazy?",
     options: [
-      "You did (and it wasn't even close)",
-      "I did, obviously",
-      "It happened at the exact same second",
-      "Our mutual friend forced us into it"
+      "Your laugh and your voice.",
+      "Your teasing and the things you say.",
+      "Your looks and the way you carry yourself.",
+      "Pretty much everything about you."
     ],
-    correctIndex: 0,
-    correctMessage: "Exactly. You got attached first. Don't even try to argue about this one.",
-    wrongMessage: "Nice try, but you know you got attached first. We both remember it."
+    correctIndex: 3,
+    correctMessage: "If you pick anything besides 4 you're larping",
+    wrongMessage: "crazy foid"
   },
   {
     id: 2,
-    question: "Who is your undisputed, chaotic main champion in League of Legends?",
+    question: "What do you think my cock misses the most?",
     options: [
-      "Briar (no thoughts, just diving into towers)",
-      "Jinx (running around with rockets)",
-      "Ahri (charm into full combo)",
-      "Yuumi (staying AFK on someone's shoulder)"
+      "Your mouth",
+      "Your hands",
+      "Your body",
+      "All of the above"
     ],
-    correctIndex: 0,
-    correctMessage: "Briar, always. Running into the whole enemy team with zero fear and 100% frenzy.",
-    wrongMessage: "Wait, are you trolling? You play Briar like your life depends on it."
+    correctIndex: 3,
+    correctMessage: "7:43",
+    wrongMessage: "maghandir walo bcs i know you'll pick the right answer"
   },
   {
     id: 3,
-    question: "What was the very first thing I ever texted you on Discord?",
+    question: "What's one thing you'd be curious to try with me?",
     options: [
-      "\"Hi, how are you doing? I just wanted to know where your profile picture is from, if you don't mind me asking.\"",
-      "\"Hey, our friend told me you like the same music as me.\"",
-      "\"Can you carry me in League?\"",
-      "\"I had no idea what to say, so hi.\""
+      "Taking the lead.",
+      "Letting me take the lead.",
+      "Trying something completely new together.",
+      "Something you've been too shy to suggest."
     ],
     correctIndex: 0,
-    correctMessage: "Yup! And you saw right through me: \"Haha, that's so funny. It's Berserk.\" I just needed an excuse to talk to you.",
-    wrongMessage: "Nope! I went with: \"Hi, how are you doing? I just wanted to know where your profile picture is from...\""
+    correctMessage: "no correct answer tbh just wanted to see",
+    wrongMessage: "no false answer tbh just wanted to see"
   },
   {
     id: 4,
-    question: "On like day two or three of talking, how did you suggest I prove that I cared?",
+    question: "If you could ask me one question and I had to answer honestly, what would you ask?",
     options: [
-      "By giving you my credit card details",
-      "By buying you a Discord Nitro subscription",
-      "By writing a five-paragraph essay about you",
-      "By sending you an embarrassing selfie"
+      "What's your biggest fantasy involving me?",
+      "What's something you've always wanted to try?",
+      "What's the most attractive thing I do without realizing?",
+      "What's something you've never told me?"
     ],
-    correctIndex: 0,
-    correctMessage: "Haha yes! You casually asked for my credit card. Boldest move I'd ever seen.",
-    wrongMessage: "Nope, you straight up asked for my credit card to prove I cared. Classic you."
+    correctIndex: 2,
+    correctMessage: "-",
+    wrongMessage: "-"
   },
   {
     id: 5,
-    question: "When things were still painfully awkward at the start, what did I tell you I was trying to do?",
+    question: "What's something you'd secretly love me to initiate?",
     options: [
-      "\"I'm trying to create something out of nothing.\"",
-      "\"I'm just trying to make a friend here.\"",
-      "\"I don't even know what we are doing.\"",
-      "\"I'm trying not to mess this up.\""
+      "A surprise kiss.",
+      "Taking the lead when we're alone.",
+      "Whispering something naughty.",
+      "Something you've been imagining for a while."
     ],
     correctIndex: 0,
-    correctMessage: "\"Trying to create something out of nothing.\" And look at what it turned into.",
-    wrongMessage: "Nope! You told me 'don't make this awkward' and I said I was trying to create something out of nothing."
+    correctMessage: "-",
+    wrongMessage: "-"
   },
   {
     id: 6,
-    question: "What's something you do that drives me crazy, but I secretly love?",
+    question: "If you could make one request and I couldn't say no to it, what would it be?",
     options: [
-      "When you pretend you're not sleepy while literally nodding off",
-      "When you blame lag every single time you die in game",
-      "When you steal my clothes and act like they were always yours",
-      "When you send me 15 reels in a row without saying anything"
+      "Let you take control for the night.",
+      "Let you choose everything we do.",
+      "Give you my undivided attention.",
+      "Tell you one of my secrets."
     ],
     correctIndex: 0,
-    correctMessage: "You'll swear you're wide awake with your eyes half-closed. It's the cutest thing ever.",
-    wrongMessage: "That's funny too, but you denying you're sleepy while yawning every 10 seconds is unbeatable."
+    correctMessage: "-",
+    wrongMessage: "-"
   },
   {
     id: 7,
-    question: "If we had an entire day completely alone with zero plans or distractions, what would I want us to do?",
+    question: "What would make you feel most desired by me?",
     options: [
-      "Stay in bed together all day, order food, and forget the rest of the world exists",
-      "Go on a packed 12-hour road trip with an itinerary",
-      "Spend 8 hours straight grinding ranked games",
-      "Go to a crowded party"
+      "The way I look at you",
+      "The way I kiss you",
+      "The things I whisper to you",
+      "The way I make you feel throughout the night"
     ],
     correctIndex: 0,
-    correctMessage: "100%. Just us, zero noise, blankets, snacks, and nowhere else to be.",
-    wrongMessage: "Definitely not! All I want is a day in bed with you, food, and zero outside world."
+    correctMessage: "-",
+    wrongMessage: "-"
   },
   {
     id: 8,
-    question: "What's my absolute favourite thing about being physically close to you?",
+    question: "What's something you'd want to experience without having to ask for it?",
     options: [
-      "The way you fit perfectly against my chest, and how warm and safe you feel",
-      "Checking how freezing your hands are",
-      "Stealing your body heat when it's cold",
-      "Having someone to rest my chin on"
+      "Being kissed unexpectedly.",
+      "Being held close.",
+      "Being reassured and made comfortable.",
+      "Being surprised by affection."
     ],
     correctIndex: 0,
-    correctMessage: "When you just sink into me and relax. There's honestly no better feeling in the world.",
-    wrongMessage: "I mean your hands ARE cold, but the real answer is how safe and comfortable it feels holding you."
+    correctMessage: "-",
+    wrongMessage: "-"
   },
   {
     id: 9,
-    question: "What is one thing about you that I could literally never get tired of?",
+    question: "What would you want more of this night?",
     options: [
-      "That soft, sleepy voice you have when you're half-awake and whispering to me",
-      "The funny faces you make when you're concentrating",
-      "Your random theories about the most random topics",
-      "How comfortable you are saying whatever comes to your mind"
+      "Passion.",
+      "Affection.",
+      "Spontaneity.",
+      "Intimacy."
     ],
     correctIndex: 0,
-    correctMessage: "That sleepy, quiet voice of yours late at night is my favourite thing to hear.",
-    wrongMessage: "I love all of those, but your quiet sleepy voice when we talk late at night is my favourite."
+    correctMessage: "-",
+    wrongMessage: "-"
   },
   {
     id: 10,
-    question: "What's something you do that instantly makes me smile, no matter what kind of mood I'm in?",
+    question: "how do you wanna fuck, after this.",
     options: [
-      "That real, unfiltered laugh you do when something catches you off guard",
-      "That smug little look you get when you know you won an argument",
-      "Threatening to bite me for no reason",
-      "Sending me the most unhinged memes at 2 AM"
+      "Missionary",
+      "Doggy",
+      "Cowgirl",
+      "Not right now"
     ],
     correctIndex: 0,
-    correctMessage: "Your genuine laugh fixes my mood in two seconds flat. Every single time.",
-    wrongMessage: "Threatening to bite is a close second, but your real laugh always wins."
+    correctMessage: "-",
+    wrongMessage: "-"
   }
 ];
 

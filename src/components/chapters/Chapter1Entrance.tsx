@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useBirthday } from '../../context/BirthdayContext';
 import { sound } from '../../utils/audio';
+import { ASSETS } from '../../utils/assets';
 import { Sparkles, KeyRound } from 'lucide-react';
 
 export const Chapter1Entrance: React.FC = () => {
@@ -33,7 +34,7 @@ export const Chapter1Entrance: React.FC = () => {
       {/* Background visual novel room with dark crimson atmosphere */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/door_entrance_1794071409986.jpg"
+          src={ASSETS.doorEntrance}
           alt="Gothic Chamber"
           className="w-full h-full object-cover object-center transition-transform duration-1000 ease-out opacity-60"
           style={{ transform: isOpening ? 'scale(1.12)' : 'scale(1)', willChange: 'transform' }}

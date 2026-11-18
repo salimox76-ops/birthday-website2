@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useBirthday } from '../../context/BirthdayContext';
+import { ASSETS, resolveAssetUrl } from '../../utils/assets';
 import { 
   Sparkles, 
   MessageSquare, 
@@ -40,7 +41,7 @@ const STORY_SCENES: StoryScene[] = [
       "The funny part? I couldn't have cared less about your profile picture. I just wanted to talk to you. I needed an excuse, and apparently, that was the best I could come up with."
     ],
     callout: "\"Haha, that's so funny. It's Berserk.\" — I just wanted an excuse to talk to you.",
-    screenshotLabel: "Her Berserk Profile Picture Placeholder",
+    screenshotLabel: "Her Berserk Profile Picture",
     screenshotPlaceholderText: "Her original Berserk profile picture reference placeholder.\nClick to upload the actual image.",
     screenshotKey: "pfp"
   },
@@ -84,14 +85,24 @@ const STORY_SCENES: StoryScene[] = [
   }
 ];
 
+const DEFAULT_SCREENSHOTS: Record<string, string> = {
+  pfp: ASSETS.discordPfp,
+  awkward_chat: ASSETS.discordAwkwardChat,
+  credit_card_chat: ASSETS.discordCreditCardChat,
+};
+
 export const Chapter2Beginning: React.FC = () => {
   const { nextChapter } = useBirthday();
   const [activeSceneIdx, setActiveSceneIdx] = useState(0);
 
   // Stored screenshots (persisted in localStorage for easy replacement)
   const [screenshots, setScreenshots] = useState<Record<string, string>>(() => {
-    const saved = localStorage.getItem('bday_discord_screenshots');
-    return saved ? JSON.parse(saved) : {};
+    try {
+      const saved = localStorage.getItem('bday_discord_screenshots');
+      return saved ? { ...DEFAULT_SCREENSHOTS, ...JSON.parse(saved) } : DEFAULT_SCREENSHOTS;
+    } catch {
+      return DEFAULT_SCREENSHOTS;
+    }
   });
 
   const [lightboxImg, setLightboxImg] = useState<{ src: string; title: string } | null>(null);
@@ -119,7 +130,7 @@ export const Chapter2Beginning: React.FC = () => {
       {/* Background with dark crimson visual novel atmosphere */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <img
-          src="/src/assets/images/storybook_cover_1794071410328.jpg"
+          src={ASSETS.storybookCover}
           alt="Atmospheric Desk"
           className="w-full h-full object-cover opacity-25"
           referrerPolicy="no-referrer"
@@ -178,7 +189,7 @@ export const Chapter2Beginning: React.FC = () => {
               {screenshots[scene.screenshotKey] ? (
                 <div className="relative w-full h-full">
                   <img
-                    src={screenshots[scene.screenshotKey]}
+                    src={resolveAssetUrl(screenshots[scene.screenshotKey])}
                     alt={scene.screenshotLabel}
                     className="w-full h-full object-contain bg-[#2b2d31]"
                   />
@@ -187,7 +198,7 @@ export const Chapter2Beginning: React.FC = () => {
                     <button
                       onClick={() =>
                         setLightboxImg({
-                          src: screenshots[scene.screenshotKey],
+                          src: resolveAssetUrl(screenshots[scene.screenshotKey]) || screenshots[scene.screenshotKey],
                           title: scene.screenshotLabel,
                         })
                       }

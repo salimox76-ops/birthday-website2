@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useBirthday } from '../../context/BirthdayContext';
 import { sound } from '../../utils/audio';
+import { ASSETS, resolveAssetUrl } from '../../utils/assets';
 import { 
   Sparkles, 
   Music, 
@@ -56,56 +57,42 @@ const DEFAULT_MEDIA_ITEMS: MediaItem[] = [
   {
     id: 'shot_1',
     type: 'screenshot',
-    title: 'The Credit Card Test',
-    caption: 'Day 2 or 3 on Discord · "Prove you care by giving me your credit card"',
-    imageSrc: undefined
+    title: '12 day ban :sob:',
+    caption: 'got me banned for a whole fucking day just to play with you',
+    imageSrc: ASSETS.mediaShot1
   },
   {
     id: 'shot_2',
     type: 'screenshot',
-    title: '"Don\'t Make This Awkward"',
-    caption: '"I was trying to create something out of nothing."',
-    imageSrc: undefined
-  },
-  {
-    id: 'photo_1',
-    type: 'photo',
-    title: 'Our Photo Placeholder 1',
-    caption: 'Click to upload our first real picture together.',
-    imageSrc: '/src/assets/images/storybook_cover_1794071410328.jpg'
-  },
-  {
-    id: 'photo_2',
-    type: 'photo',
-    title: 'Our Photo Placeholder 2',
-    caption: 'Click to upload your favorite memory with her.',
-    imageSrc: '/src/assets/images/cake_backdrop_1794071412244.jpg'
+    title: 'when i struck gold',
+    caption: 'screenshot speaks for itself :)',
+    imageSrc: ASSETS.mediaShot2
   }
 ];
 
 const DEFAULT_JOKES: InsideJoke[] = [
   {
     id: 'joke_1',
-    title: 'The Credit Card Test',
-    punchline: 'Testing my dedication on day two by asking for my card numbers. Boldest move in Discord history.',
+    title: 'funny slop #1',
+    punchline: '3rfti chno l oumniya dyali ? hya nwli 7amla',
     tag: 'Classic'
   },
   {
     id: 'joke_2',
-    title: 'Briar Tower Diving',
-    punchline: 'Zero vision, five enemies, half HP... "I\'m going in, don\'t worry." (Famous last words before ace).',
+    title: 'funny slop #2',
+    punchline: "-yasmina don't go in u die\n-okay salim *ults*",
     tag: 'League'
   },
   {
     id: 'joke_3',
-    title: 'The Sleepy Denial',
-    punchline: '"I\'m literally not even tired" while yawning so hard the microphone clips.',
+    title: 'funny slop #3',
+    punchline: '-yasmina katfrji yak ? \n-ah ah  a salim rani fay9a\n-yasmina?\n-😴',
     tag: 'Bedtime'
   },
   {
     id: 'joke_4',
-    title: 'She Caught Feelings First',
-    punchline: 'She can argue about this until our 80th anniversary, but we both know the truth.',
+    title: 'funny slop #4',
+    punchline: "you're diddy foid",
     tag: 'Fact'
   }
 ];
@@ -113,26 +100,26 @@ const DEFAULT_JOKES: InsideJoke[] = [
 const DEFAULT_SONGS: CustomSong[] = [
   {
     id: 1,
-    title: "About You",
-    artist: "The 1975",
-    dedicatedReason: "Our music taste overlap that started the whole conversation.",
-    spotifyUri: "https://open.spotify.com/track/1P8sqgerhqcpHQIiquk05l",
+    title: "Moon (さよならを教えて)",
+    artist: "BUCK-TICK",
+    dedicatedReason: "reminds me of you, when u want to sleep",
+    spotifyUri: "https://open.spotify.com/track/77VEGkiUBbvRGNfHNynPDT?si=7d22093ad41e4f49",
     accentNoteFreq: 659.25,
   },
   {
     id: 2,
-    title: "Song Placeholder 2",
-    artist: "[ Artist Placeholder ]",
-    dedicatedReason: "[ Click 'Edit Songs' to paste our song title & Spotify link ]",
-    spotifyUri: "https://open.spotify.com",
+    title: "Parisienne Walkways",
+    artist: "Gary Moore",
+    dedicatedReason: "i remember showing you this song and you crying because of it, that moment marked me for some reason",
+    spotifyUri: "https://open.spotify.com/track/6z4VNjyxLfRXRx23gzl51x?si=da5b85eee21a4109",
     accentNoteFreq: 783.99,
   },
   {
     id: 3,
-    title: "Song Placeholder 3",
-    artist: "[ Artist Placeholder ]",
-    dedicatedReason: "[ Click 'Edit Songs' to customize this track ]",
-    spotifyUri: "https://open.spotify.com",
+    title: "How Can You Mend a Broken Heart",
+    artist: "Al Green",
+    dedicatedReason: "I picked this one since it reminds you of me, wanted to pick marvin also or prince ? but idk",
+    spotifyUri: "https://open.spotify.com/track/6lUXneXZ9jc3HSMHgd8oqh?si=5234a034434f4da8",
     accentNoteFreq: 880.00,
   }
 ];
@@ -141,25 +128,25 @@ const DEFAULT_NOTES: SecretNote[] = [
   {
     id: 1,
     envelopeTitle: "When you feel stressed...",
-    secretText: "Take a deep breath and tell me what's bugging you. Even if we just sit in quiet on Discord, I'm right here.",
+    secretText: "When you feel stressed, just know that you can always rely on me. Talk to me, rant, tell me whatever's on your mind. I'll always be here for you, and I'll always listen.\n\nI'll try my best to make you feel better about yourself, ease your worries, and help you through whatever you're going through.\n\nAnd even if I can't find a solution to whatever's stressing you out, I'll still listen. I'll be there, and I'll be present. You don't have to figure everything out on your own.\n\nThat's what I want to do for you. I just want to be helpful and be someone you can count on, especially when things get difficult.\n\nI love you, and I care. I care so much about you.",
     opened: false,
   },
   {
     id: 2,
     envelopeTitle: "Random honest thought...",
-    secretText: "Sometimes when you're super focused or laughing, I just catch myself thinking how crazy lucky I got with you.",
+    secretText: "Sometimes I just stop and think about how lucky I am to have you in my life. Not even because of anything special you've done, but simply because you're you. I get to talk to you, laugh with you, share stupid moments with you, and make memories with you. And honestly, I don't ever want to take any of that for granted. I'm really glad I met you.",
     opened: false,
   },
   {
     id: 3,
     envelopeTitle: "About your laugh...",
-    secretText: "Your unfiltered laugh is literally my favourite sound in the world. Makes any bad day disappear immediately.",
+    secretText: "I like the way you laugh, the way you speak, and your voice. It's so beautiful, and it genuinely makes me melt.\n\nI don't know how to explain it, but it moves something inside me. I just love hearing you laugh, hearing you talk, and seeing you happy. It makes me happy too, and I'll always try my best to keep it that way.\n\nI love hearing you, even when we're talking about absolutely nothing. I don't think I'll ever get tired of it.",
     opened: false,
   },
   {
     id: 4,
     envelopeTitle: "For turning 21...",
-    secretText: "Happy 21st birthday. I can't wait for everything we're going to do this year.",
+    secretText: "Happy 21st birthday!\n\nI hope we get to achieve the things we want this year, both together and individually. I hope you get to accomplish all the personal goals you've set for yourself, and that this year brings you closer to the things you've been working towards.\n\nAnd I really hope we get to be together throughout all of it. Through your journey and ours. I want to keep growing with you, experiencing life with you, and eventually, I hope we get to finish this journey together.\n\nI love you, and I hope you enjoy being 21. You deserve to be happy.",
     opened: false,
   }
 ];
@@ -176,8 +163,16 @@ export const Chapter4LittleThings: React.FC = () => {
 
   // Media state (persisted)
   const [mediaItems, setMediaItems] = useState<MediaItem[]>(() => {
-    const saved = localStorage.getItem('bday_media_items_v2');
-    return saved ? JSON.parse(saved) : DEFAULT_MEDIA_ITEMS;
+    try {
+      const saved = localStorage.getItem('bday_media_items_v2');
+      if (saved) {
+        const parsed = JSON.parse(saved) as MediaItem[];
+        return parsed.filter(m => m.id !== 'photo_1' && m.id !== 'photo_2');
+      }
+    } catch {
+      // Fallback to defaults
+    }
+    return DEFAULT_MEDIA_ITEMS;
   });
   const [mediaFilter, setMediaFilter] = useState<'all' | 'photo' | 'screenshot'>('all');
 
@@ -414,7 +409,7 @@ export const Chapter4LittleThings: React.FC = () => {
               </div>
 
               {/* Media Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {filteredMedia.map(item => {
                   const isDiscord = item.type === 'screenshot';
 
@@ -432,7 +427,7 @@ export const Chapter4LittleThings: React.FC = () => {
                         onClick={() => {
                           if (item.imageSrc) {
                             setLightboxImg({
-                              src: item.imageSrc,
+                              src: resolveAssetUrl(item.imageSrc) || item.imageSrc,
                               title: item.title,
                               caption: item.caption,
                             });
@@ -445,7 +440,7 @@ export const Chapter4LittleThings: React.FC = () => {
                         {item.imageSrc ? (
                           <>
                             <img
-                              src={item.imageSrc}
+                              src={resolveAssetUrl(item.imageSrc)}
                               alt={item.title}
                               className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                               referrerPolicy="no-referrer"
@@ -971,7 +966,7 @@ export const Chapter4LittleThings: React.FC = () => {
             </div>
             <div className="p-4 flex-1 flex items-center justify-center overflow-auto bg-[#1e1f22]">
               <img
-                src={lightboxImg.src}
+                src={resolveAssetUrl(lightboxImg.src)}
                 alt={lightboxImg.title}
                 className="max-h-[72vh] max-w-full object-contain rounded-lg shadow-xl"
                 referrerPolicy="no-referrer"

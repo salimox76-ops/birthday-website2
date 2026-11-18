@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useBirthday } from '../../context/BirthdayContext';
 import { Sparkles, Shield, Heart, Compass, ChevronRight, Edit3 } from 'lucide-react';
 
@@ -17,7 +17,7 @@ const DEFAULT_MILESTONES: JourneyMilestone[] = [
     category: "Milestone 1",
     badgeIcon: "💬",
     title: "Late Night Calls & No Sleep",
-    timeframe: "[ Memory Placeholder ]",
+    timeframe: "Late Nights",
     story:
       "We went from that awkward first message to talking until 4 AM almost every night. Neither of us wanted to hang up first, even when we had to wake up early the next day.",
     reflection:
@@ -28,7 +28,7 @@ const DEFAULT_MILESTONES: JourneyMilestone[] = [
     category: "Milestone 2",
     badgeIcon: "🛡️",
     title: "Handling Bad Days Together",
-    timeframe: "[ Memory Placeholder ]",
+    timeframe: "Through Everything",
     story:
       "Whenever one of us was stressed out, tired, or in a terrible mood, we learned how to deal with it. No drama, just being there, listening, and giving each other space when needed.",
     reflection:
@@ -39,7 +39,7 @@ const DEFAULT_MILESTONES: JourneyMilestone[] = [
     category: "Milestone 3",
     badgeIcon: "🎮",
     title: "Games, Calls & Normal Life",
-    timeframe: "[ Daily Life Placeholder ]",
+    timeframe: "Every Day",
     story:
       "All the small stuff: screensharing on Discord, you yelling at your Briar games, sending each other dumb memes, and arguing about who's ordering what food.",
     reflection:
@@ -62,8 +62,19 @@ const DEFAULT_MILESTONES: JourneyMilestone[] = [
 export const Chapter3Journey: React.FC = () => {
   const { nextChapter } = useBirthday();
   const [activeIdx, setActiveIdx] = useState(0);
-  const [milestones, setMilestones] = useState<JourneyMilestone[]>(DEFAULT_MILESTONES);
+  const [milestones, setMilestones] = useState<JourneyMilestone[]>(() => {
+    try {
+      const saved = localStorage.getItem('bday_journey_milestones');
+      return saved ? JSON.parse(saved) : DEFAULT_MILESTONES;
+    } catch {
+      return DEFAULT_MILESTONES;
+    }
+  });
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('bday_journey_milestones', JSON.stringify(milestones));
+  }, [milestones]);
 
   const current = milestones[activeIdx];
 
@@ -139,9 +150,10 @@ export const Chapter3Journey: React.FC = () => {
                   type="text"
                   value={current.title}
                   onChange={e => {
-                    const next = [...milestones];
-                    next[activeIdx].title = e.target.value;
-                    setMilestones(next);
+                    const val = e.target.value;
+                    setMilestones(prev =>
+                      prev.map((m, idx) => (idx === activeIdx ? { ...m, title: val } : m))
+                    );
                   }}
                   className="w-full bg-[#1b0511] border border-white/20 rounded p-2 text-white"
                 />
@@ -152,9 +164,10 @@ export const Chapter3Journey: React.FC = () => {
                   type="text"
                   value={current.timeframe}
                   onChange={e => {
-                    const next = [...milestones];
-                    next[activeIdx].timeframe = e.target.value;
-                    setMilestones(next);
+                    const val = e.target.value;
+                    setMilestones(prev =>
+                      prev.map((m, idx) => (idx === activeIdx ? { ...m, timeframe: val } : m))
+                    );
                   }}
                   className="w-full bg-[#1b0511] border border-white/20 rounded p-2 text-white"
                 />
@@ -165,9 +178,10 @@ export const Chapter3Journey: React.FC = () => {
                   rows={4}
                   value={current.story}
                   onChange={e => {
-                    const next = [...milestones];
-                    next[activeIdx].story = e.target.value;
-                    setMilestones(next);
+                    const val = e.target.value;
+                    setMilestones(prev =>
+                      prev.map((m, idx) => (idx === activeIdx ? { ...m, story: val } : m))
+                    );
                   }}
                   className="w-full bg-[#1b0511] border border-white/20 rounded p-2 text-white"
                 />
@@ -178,9 +192,10 @@ export const Chapter3Journey: React.FC = () => {
                   rows={3}
                   value={current.lesson}
                   onChange={e => {
-                    const next = [...milestones];
-                    next[activeIdx].lesson = e.target.value;
-                    setMilestones(next);
+                    const val = e.target.value;
+                    setMilestones(prev =>
+                      prev.map((m, idx) => (idx === activeIdx ? { ...m, lesson: val } : m))
+                    );
                   }}
                   className="w-full bg-[#1b0511] border border-white/20 rounded p-2 text-white"
                 />

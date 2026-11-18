@@ -1,16 +1,17 @@
 import React from 'react';
 import { useBirthday } from '../context/BirthdayContext';
 import { CHAPTER_METADATA } from './NavigationControls';
+import { ASSETS } from '../utils/assets';
 import { X, Sparkles, BookOpen } from 'lucide-react';
 
 const CHAPTER_THUMBNAILS: Record<number, { image?: string; icon: string; quote: string }> = {
   1: {
-    image: "/src/assets/images/door_entrance_1794071409986.jpg",
+    image: ASSETS.doorEntrance,
     icon: "🚪",
     quote: "Something waiting for you...",
   },
   2: {
-    image: "/src/assets/images/storybook_cover_1794071410328.jpg",
+    image: ASSETS.storybookCover,
     icon: "💬",
     quote: "Where's your profile picture from? (Just an excuse)",
   },
@@ -19,7 +20,7 @@ const CHAPTER_THUMBNAILS: Record<number, { image?: string; icon: string; quote: 
     quote: "Every late night and memory we've shared.",
   },
   4: {
-    image: "/src/assets/images/cat_bunny_art_1794071410548.jpg",
+    image: ASSETS.catBunnyArt,
     icon: "🐾",
     quote: "Screenshots, inside jokes, cats & songs.",
   },
@@ -28,7 +29,7 @@ const CHAPTER_THUMBNAILS: Record<number, { image?: string; icon: string; quote: 
     quote: "10 questions — and you got attached first.",
   },
   6: {
-    image: "/src/assets/images/cake_backdrop_1794071412244.jpg",
+    image: ASSETS.cakeBackdrop,
     icon: "🎂",
     quote: "21 candles to blow out and cake to eat.",
   },

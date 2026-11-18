@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useBirthday } from '../../context/BirthdayContext';
 import { sound } from '../../utils/audio';
+import { ASSETS } from '../../utils/assets';
 import confetti from 'canvas-confetti';
 import { Sparkles, BookOpen, Heart, Crown, Gift, RotateCcw } from 'lucide-react';
 
@@ -52,7 +53,7 @@ export const Chapter8Surprise: React.FC = () => {
       {/* Background with dark crimson atmosphere */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <img
-          src="/src/assets/images/cake_backdrop_1794071412244.jpg"
+          src={ASSETS.cakeBackdrop}
           alt="Golden Celebration"
           className="w-full h-full object-cover opacity-25"
           referrerPolicy="no-referrer"
